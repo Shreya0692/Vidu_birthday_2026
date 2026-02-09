@@ -3,73 +3,85 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Happy 23rd Birthday, Vidu 💛</title>
+  <title>Happy 23rd Birthday Baby 💙</title>
+
   <style>
     :root{
-      --bg1:#0b1026;
-      --bg2:#1a0b2e;
+      --bg1:#050b1e;
+      --bg2:#0b1a3a;
       --card:#ffffff14;
-      --card2:#ffffff10;
-      --text:#f7f7ff;
-      --muted:#d9d9ffcc;
-      --accent:#ffd166;
-      --accent2:#ff6bd6;
-      --good:#55efc4;
-      --bad:#ff7675;
+      --card2:#ffffff0f;
+      --text:#f5f8ff;
+      --muted:#cdd7ffcc;
+      --accent:#6bb7ff;
+      --accent2:#3fa9ff;
       --shadow: 0 18px 50px rgba(0,0,0,.35);
       --radius: 22px;
     }
+
     *{box-sizing:border-box}
+
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
       color:var(--text);
-      background: radial-gradient(1200px 700px at 15% 15%, #3b2dff25, transparent 60%),
-                  radial-gradient(900px 500px at 85% 20%, #ff4fd825, transparent 60%),
-                  radial-gradient(900px 650px at 60% 90%, #ffd16622, transparent 60%),
-                  linear-gradient(135deg, var(--bg1), var(--bg2));
+      background:
+        radial-gradient(900px 500px at 20% 20%, #4da3ff25, transparent 60%),
+        radial-gradient(800px 500px at 80% 30%, #3fa9ff25, transparent 60%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
       min-height:100vh;
       overflow-x:hidden;
+      text-align:center;
     }
+
     .stars{
-      position:fixed; inset:0; pointer-events:none; opacity:.35;
+      position:fixed; inset:0; pointer-events:none; opacity:.3;
       background-image:
-        radial-gradient(2px 2px at 20px 30px, #fff, transparent 40%),
-        radial-gradient(2px 2px at 80px 90px, #fff, transparent 40%),
-        radial-gradient(1px 1px at 140px 50px, #fff, transparent 40%),
-        radial-gradient(1px 1px at 220px 120px, #fff, transparent 40%),
-        radial-gradient(2px 2px at 320px 60px, #fff, transparent 40%),
-        radial-gradient(1px 1px at 460px 140px, #fff, transparent 40%),
-        radial-gradient(2px 2px at 520px 40px, #fff, transparent 40%),
-        radial-gradient(1px 1px at 620px 110px, #fff, transparent 40%),
-        radial-gradient(2px 2px at 720px 80px, #fff, transparent 40%),
-        radial-gradient(1px 1px at 860px 130px, #fff, transparent 40%);
-      background-size: 900px 220px;
+        radial-gradient(1.5px 1.5px at 40px 60px, #fff, transparent 40%),
+        radial-gradient(1.5px 1.5px at 120px 140px, #fff, transparent 40%),
+        radial-gradient(1px 1px at 240px 80px, #fff, transparent 40%),
+        radial-gradient(2px 2px at 360px 160px, #fff, transparent 40%);
+      background-size: 600px 200px;
       animation: drift 18s linear infinite;
     }
+
     @keyframes drift{
       from{transform:translateY(0)}
       to{transform:translateY(60px)}
     }
-    .wrap{max-width:1020px; margin:0 auto; padding:28px 18px 80px}
-    header{
-      display:flex; flex-wrap:wrap; gap:14px; align-items:flex-end; justify-content:space-between;
-      margin: 18px 0 22px;
-    }
-    .title{display:flex; flex-direction:column; gap:6px;}
+
+    .wrap{max-width:1000px; margin:0 auto; padding:32px 18px 80px}
+
+    header{margin-bottom:26px}
+
     h1{
       margin:0;
-      font-size: clamp(30px, 4vw, 46px);
+      font-size:clamp(32px,4vw,46px);
       letter-spacing:-.02em;
     }
-    .subtitle{color:var(--muted); max-width:580px; line-height:1.45}
-    .pillrow{display:flex; gap:10px; flex-wrap:wrap}
+
+    .subtitle{
+      margin-top:10px;
+      color:var(--muted);
+      line-height:1.5;
+      max-width:720px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .pillrow{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
     .pill{
-      padding:8px 12px;
+      padding:8px 14px;
       border-radius:999px;
-      background: linear-gradient(135deg, #ffffff22, #ffffff0a);
-      border:1px solid #ffffff1f;
-      box-shadow: 0 10px 30px rgba(0,0,0,.2);
+      background:#ffffff18;
+      border:1px solid #ffffff25;
       font-size:13px;
       color:#ffffffdd;
       backdrop-filter: blur(10px);
@@ -77,137 +89,144 @@
 
     .grid{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:16px;
-    }
-    @media (max-width: 900px){
-      .grid{grid-template-columns:1fr}
+      grid-template-columns:1fr;
+      gap:18px;
     }
 
     .card{
       background: linear-gradient(180deg, var(--card), var(--card2));
-      border:1px solid #ffffff1f;
+      border:1px solid #ffffff20;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding:18px;
+      padding:22px;
       backdrop-filter: blur(10px);
-      position:relative;
-      overflow:hidden;
-    }
-    .card h2{margin:0 0 10px; font-size:18px}
-    .card p{margin:0; color:var(--muted); line-height:1.5}
-
-    .hero{display:flex; gap:16px; align-items:center; justify-content:space-between;}
-    .big{font-size: clamp(22px, 2.3vw, 28px); line-height:1.35; margin: 10px 0 14px;}
-    .spark{
-      width:92px; height:92px; border-radius:28px;
-      background: radial-gradient(circle at 30% 30%, #ffd166, transparent 55%),
-                  radial-gradient(circle at 70% 40%, #ff6bd6, transparent 60%),
-                  radial-gradient(circle at 50% 80%, #6b9bff, transparent 55%),
-                  linear-gradient(135deg, #ffffff1a, #ffffff05);
-      border:1px solid #ffffff1f;
-      box-shadow: 0 14px 40px rgba(0,0,0,.35);
-      position:relative;
-      flex:0 0 auto;
-      transform: rotate(-6deg);
-    }
-    .spark:after{
-      content:"✨";
-      position:absolute; inset:0;
-      display:grid; place-items:center;
-      font-size:38px;
-      filter: drop-shadow(0 10px 18px rgba(0,0,0,.4));
     }
 
-    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    h2{margin:0 0 12px}
+
+    p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.55;
+    }
+
+    .big{
+      font-size:clamp(22px,2.3vw,28px);
+      margin:12px 0;
+    }
+
+    .btnrow{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
     button{
       border:0;
-      padding:11px 14px;
-      border-radius:14px;
-      background: linear-gradient(135deg, #ffd166, #ff6bd6);
-      color:#1b1022;
+      padding:12px 16px;
+      border-radius:16px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#05142f;
       font-weight:800;
       cursor:pointer;
-      box-shadow: 0 12px 30px rgba(0,0,0,.25);
-      transition: transform .08s ease, filter .2s ease;
+      box-shadow:0 12px 30px rgba(0,0,0,.25);
     }
-    button:hover{filter:saturate(1.05)}
-    button:active{transform: translateY(1px) scale(.99)}
+
     .ghost{
-      background: linear-gradient(135deg, #ffffff18, #ffffff08);
+      background:#ffffff18;
       color:#fff;
-      border:1px solid #ffffff1f;
-      font-weight:750;
+      border:1px solid #ffffff30;
     }
-    .small{font-size:13px; color:var(--muted); margin-top:10px}
 
     .quoteBox{
-      margin-top:12px;
-      padding:14px;
-      border-radius:16px;
+      margin-top:14px;
+      padding:16px;
+      border-radius:18px;
       border:1px dashed #ffffff35;
-      background: #00000020;
+      background:#00000025;
     }
-    .quoteText{font-size:16px; color:#ffffffee; line-height:1.55;}
-    .quoteMeta{margin-top:8px; font-size:12px; color: var(--muted);}
 
-    .list{display:grid; gap:10px; margin-top:12px;}
+    .quoteText{font-size:16px; line-height:1.6}
+
+    .quoteMeta{
+      margin-top:8px;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .list{
+      display:grid;
+      gap:10px;
+      margin-top:14px;
+    }
+
     .chip{
-      padding:12px 12px;
-      border-radius:16px;
-      background: #ffffff10;
-      border:1px solid #ffffff1f;
-      color:#ffffffee;
+      padding:14px;
+      border-radius:18px;
+      background:#ffffff14;
+      border:1px solid #ffffff25;
     }
-    .chip b{color: var(--accent)}
-    .chip span{color: var(--muted)}
-
-    .quizQ{margin-top:10px; font-weight:850}
-    .options{display:grid; gap:10px; margin-top:10px}
-    .opt{
-      text-align:left;
-      background: #ffffff10;
-      border:1px solid #ffffff1f;
-      color:#fff;
-      padding:12px 12px;
-      border-radius:16px;
-      cursor:pointer;
-      font-weight:750;
-    }
-    .opt.correct{border-color:#55efc480; background:#55efc41a}
-    .opt.wrong{border-color:#ff767580; background:#ff76751a}
-    .score{margin-top:10px; color:var(--muted); font-size:13px}
 
     details{
-      margin-top:12px;
-      border-radius:16px;
-      border:1px solid #ffffff1f;
-      background:#ffffff0c;
-      padding:12px;
+      margin-top:14px;
+      border-radius:18px;
+      border:1px solid #ffffff25;
+      background:#ffffff10;
+      padding:14px;
     }
-    summary{cursor:pointer; font-weight:900}
-    .secret{margin-top:10px; color:#fff; line-height:1.55}
 
-    /* Confetti */
-    .confetti{position:fixed; inset:0; pointer-events:none; overflow:hidden;}
+    summary{
+      cursor:pointer;
+      font-weight:900;
+    }
+
+    .options{
+      display:grid;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .opt{
+      padding:14px;
+      border-radius:18px;
+      background:#ffffff14;
+      border:1px solid #ffffff25;
+      color:#fff;
+      cursor:pointer;
+      font-weight:700;
+    }
+
+    .opt.correct{background:#6bb7ff33}
+    .opt.wrong{background:#ff6b6b33}
+
+    .score{
+      margin-top:10px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .confetti{
+      position:fixed; inset:0; pointer-events:none;
+    }
+
     .piece{
       position:absolute;
       top:-10px;
       width:10px; height:14px;
-      opacity:.9;
       border-radius:3px;
       animation: fall linear forwards;
     }
+
     @keyframes fall{
-      to{transform: translateY(110vh) rotate(680deg); opacity: 1;}
+      to{transform:translateY(110vh) rotate(720deg)}
     }
 
     footer{
-      margin-top:18px;
-      color: #ffffffaa;
+      margin-top:28px;
       font-size:12px;
-      text-align:center;
-      padding-top:20px;
+      color:#ffffffaa;
     }
   </style>
 </head>
@@ -217,360 +236,139 @@
   <div class="confetti" id="confetti"></div>
 
   <div class="wrap">
+
     <header>
-      <div class="title">
-        <h1>Happy <span id="age">23rd</span> Birthday, <span id="name">Vidu</span> 🎂💛</h1>
-        <div class="subtitle">
-          Welcome to your tiny birthday universe — full of hugs, happy thoughts, and little surprises.
-          And yes… your gifts are on a heroic journey to you 😄
-        </div>
+      <h1>Happy 23rd Birthday, Vidu 💙</h1>
+      <div class="subtitle">
+        A small corner of the internet made just for you —
+        full of love, laughter, and birthday magic.
       </div>
       <div class="pillrow">
-        <div class="pill" id="datePill">🌟 Today is your day</div>
-        <div class="pill">🍰 Unlimited cake rights</div>
+        <div class="pill">🎂 Birthday Girl</div>
+        <div class="pill">💙 23 & thriving</div>
         <div class="pill">🎁 Birthday season extended</div>
       </div>
     </header>
 
     <div class="grid">
 
-      <!-- Fortune Cookie -->
       <section class="card">
-        <div class="hero">
-          <div>
-            <h2>Birthday Fortune Cookie ✨</h2>
-            <div class="big" id="headline">
-              Tap the button for a love-thought made just for you, Vidu.
-            </div>
-          </div>
-          <div class="spark"></div>
-        </div>
+        <h2>Birthday Fortune ✨</h2>
+        <div class="big" id="headline">Tap for a love-thought made just for you.</div>
 
         <div class="btnrow">
-          <button id="newQuoteBtn">Open a Fortune 🍪</button>
+          <button id="newQuoteBtn">Open a Fortune 💙</button>
           <button class="ghost" id="confettiBtn">More Confetti 🎉</button>
-          <button class="ghost" id="copyBtn">Copy This 📋</button>
         </div>
 
-        <div class="quoteBox" aria-live="polite">
-          <div class="quoteText" id="quoteText">“Vidu, you are loved bigger than the sky.”</div>
-          <div class="quoteMeta" id="quoteMeta">— from your biggest fan 💛</div>
+        <div class="quoteBox">
+          <div class="quoteText" id="quoteText"></div>
+          <div class="quoteMeta">— from your biggest fan 💙</div>
         </div>
-
-        <p class="small">
-          Tip: You can edit the messages in the code (search for <b>QUOTES</b>, <b>MEMORIES</b>, and <b>SECRET_MESSAGE</b>).
-        </p>
       </section>
 
-      <!-- Memory Wall + Secret -->
-      <aside class="card">
-        <h2>Mini Memory Wall 🧡</h2>
-        <p>A few love-thoughts for the birthday girl.</p>
-
-        <div class="list" id="memoryList"></div>
-
-        <details>
-          <summary>Open a secret birthday message 🔐</summary>
-          <div class="secret" id="secretMsg"></div>
-        </details>
-      </aside>
-
-      <!-- Gifts En Route -->
       <section class="card">
-        <h2>Incoming Birthday Loot 🚚💨</h2>
+        <h2>Incoming Birthday Gifts 🚚</h2>
         <p>
-          Today you get hugs + wishes immediately… and two surprise gifts are traveling to you like VIPs.
-          (Late gifts just mean your birthday lasts longer. That’s the rule.)
+          Your birthday comes in chapters.
+          Today is love & wishes.
+          Very soon… gifts arrive ✨
         </p>
 
         <div class="list">
-          <div class="chip">⌚ <b>Apple Watch</b> <span>— on its way to your wrist like a superhero gadget.</span></div>
-          <div class="chip">🌸 <b>Perfume</b> <span>— incoming: “main character” scent upgrade.</span></div>
-          <div class="chip">📦 <b>Status</b> <span id="shipStatus">In transit… (and getting closer!)</span></div>
+          <div class="chip">⌚ Apple Watch — on its heroic journey</div>
+          <div class="chip">🌸 Perfume — confidence in a bottle</div>
+          <div class="chip" id="shipStatus">📦 Status: getting closer</div>
         </div>
 
         <div class="btnrow">
-          <button class="ghost" id="updateShipBtn">Check “Delivery Radar” 📡</button>
-          <button class="ghost" id="revealGiftBtn">Reveal a Hint 🎁</button>
-          <button class="ghost" id="giftConfettiBtn">Celebrate the Arrival 🎊</button>
-        </div>
-
-        <div class="quoteBox" style="margin-top:12px">
-          <div class="quoteText" id="giftHint">Hint: One gift tells time. One gift smells like confidence.</div>
-          <div class="quoteMeta">P.S. If they arrive late, we simply celebrate again 😌</div>
+          <button class="ghost" id="updateShipBtn">Check Delivery Radar 📡</button>
         </div>
       </section>
 
-      <!-- Quiz -->
       <section class="card">
-        <h2>Birthday Mini-Quiz 🎮</h2>
-        <p>A tiny game. No pressure. Maximum fun.</p>
-
-        <div class="quizQ" id="quizQ">Question will load…</div>
-        <div class="options" id="options"></div>
-        <div class="score" id="score">Score: 0 / 0</div>
-
-        <div class="btnrow" style="margin-top:12px">
-          <button class="ghost" id="nextQBtn">Next Question ➜</button>
-          <button class="ghost" id="resetQuizBtn">Reset</button>
-        </div>
+        <h2>Secret Birthday Message 🔐</h2>
+        <details>
+          <summary>Open when you’re smiling 😊</summary>
+          <p>
+            If hugs were stars, I’d give you a whole galaxy.
+            Two special gifts are on the way —
+            arriving a little after today,
+            just so your birthday lasts longer.
+            Happy 23rd, Vidu 💙
+          </p>
+        </details>
       </section>
 
-      <!-- Compliment Cannon -->
-      <aside class="card">
+      <section class="card">
         <h2>Compliment Cannon 💥</h2>
-        <p>Because the world needs more “you’re awesome” messages.</p>
-
-        <div class="quoteBox" style="cursor:pointer" id="complimentBox" title="Click for another compliment">
-          <div class="quoteText" id="complimentText">You make ordinary days feel special.</div>
-          <div class="quoteMeta">Tap the box or press the button.</div>
+        <div class="quoteBox">
+          <div class="quoteText" id="complimentText"></div>
         </div>
-
         <div class="btnrow">
-          <button class="ghost" id="complimentBtn">Pew Pew Compliment 💫</button>
+          <button class="ghost" id="complimentBtn">Another Compliment 💙</button>
         </div>
-
-        <p class="small">
-          Want to add photos later? Put images in the same folder and add &lt;img&gt; tags in the Memory Wall section.
-        </p>
-      </aside>
+      </section>
 
     </div>
 
     <footer>
-      Made with 💛 for Vidu’s 23rd. Late gifts = extended birthday season.
+      Made with 💙 just for Vidu
     </footer>
   </div>
 
   <script>
-    // ====== Customize here (optional) ======
-    const SISTER_NAME = "Vidu";
-    const AGE_TEXT = "23rd";
-    const FROM_LINE = "— from your big sibling 💛";
-
     const QUOTES = [
-      "Vidu, you are loved bigger than the sky.",
-      "You’re 23 today — that’s 23 levels of glow-up energy ✨",
-      "If you ever forget how amazing you are, come back here: YOU. ARE. AMAZING.",
-      "I’m so proud of the person you’re becoming — brave, kind, and unstoppable.",
-      "You make our family happier just by being you.",
-      "Birthday rule: you get cake, compliments, and zero guilt.",
-      "Your heart is one of my favorite places.",
-      "Even when you feel small, your dreams are allowed to be HUGE.",
-      "Today comes in chapters: Chapter 1 = birthday. Chapter 2 = gifts arriving 😄",
-      "Two gifts are on a mission: wrist-superpower + ‘you smell amazing’ surprise.",
-      "Late gifts don’t mean late love — it means bonus celebration days 🎉",
-      "If confidence had a best friend, it would be you."
+      "You are loved more than you know.",
+      "23 looks incredibly good on you.",
+      "You make life brighter just by being you.",
+      "Your kindness is your superpower.",
+      "You deserve all the happiness you give others."
     ];
-
-    const MEMORIES = [
-      { emoji:"💫", title:"Superpower:", text:"Your kindness makes rooms brighter." },
-      { emoji:"🌈", title:"I love how you:", text:"laugh at silly things and stay brave." },
-      { emoji:"🧸", title:"Reminder:", text:"Even on hard days, you’re never alone." },
-      { emoji:"🌟", title:"23 looks like:", text:"a whole new year of you winning." }
-    ];
-
-    const SECRET_MESSAGE =
-`If hugs were stars, I’d give you a whole galaxy.
-Also… two surprise gifts are on the way:
-⌚ an Apple Watch, and 🌸 a perfume.
-They’re arriving a little after your birthday — but that just means we celebrate longer.
-Happy 23rd Birthday, Vidu 💛`;
 
     const COMPLIMENTS = [
       "You make ordinary days feel special.",
-      "You’re the kind of person who makes people feel safe.",
-      "Your laugh should be in a museum because it’s priceless.",
-      "You’re smart AND sweet — the best combo.",
-      "You have main-character energy (in the best way).",
-      "You’re brave even when you don’t realize it.",
-      "You’re a walking ‘good vibes only’ sign.",
-      "You make everyone’s world softer and brighter.",
-      "You’re the definition of ‘effortlessly lovable.’",
-      "You deserve the kind of happiness you give others."
+      "You’re effortlessly wonderful.",
+      "Your smile changes the mood instantly.",
+      "You’re calm, strong, and beautiful.",
+      "You’re exactly who you’re meant to be."
     ];
 
     const shipStatuses = [
-      "In transit… (and getting closer!)",
-      "Currently teleporting across cities ✈️",
-      "Somewhere between ‘soon’ and ‘OMG it’s here!’",
-      "Taking the scenic route (for dramatic effect) 😄",
-      "Birthday Extension Pack: ACTIVATED 🎉"
+      "📦 Getting closer every day",
+      "✈️ Traveling across cities",
+      "🕒 Almost there",
+      "🎁 Birthday extension activated"
     ];
 
-    const giftHints = [
-      "One gift = wrist magic. One gift = ‘you smell amazing’ magic.",
-      "One gift is a tiny computer. One gift is a tiny confidence boost.",
-      "Two gifts are on a mission: upgrade your day.",
-      "Late delivery = extra celebration days. Science.",
-      "Clue: one belongs on your wrist… the other belongs in your ‘iconic era.’"
-    ];
-
-    const QUIZ = [
-      {
-        q: "What is Vidu’s official birthday status today?",
-        a: 0,
-        options: ["Queen of the Day 👑", "Regular human", "Tiny raccoon", "Sleepy potato"]
-      },
-      {
-        q: "Which superpower does Vidu have?",
-        a: 1,
-        options: ["Turning invisible", "Making people smile", "Talking to dolphins", "Time travel (yet)"]
-      },
-      {
-        q: "What should Vidu get unlimited today?",
-        a: 2,
-        options: ["Homework", "Broccoli", "Hugs + cake", "Alarm clocks"]
-      }
-    ];
-    // ============================
-
+    const rand = (arr) => arr[Math.floor(Math.random()*arr.length)];
     const $ = (id) => document.getElementById(id);
-    const rand = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-    // Header setup
-    $("name").textContent = SISTER_NAME;
-    $("age").textContent = AGE_TEXT;
+    function setQuote(){ $("quoteText").textContent = rand(QUOTES); }
+    function setCompliment(){ $("complimentText").textContent = rand(COMPLIMENTS); }
 
-    // Date pill
-    const d = new Date();
-    const pretty = d.toLocaleDateString(undefined, { weekday:"long", month:"long", day:"numeric" });
-    $("datePill").textContent = `🌟 ${pretty}`;
+    $("newQuoteBtn").onclick = () => { setQuote(); confetti(120); };
+    $("confettiBtn").onclick = () => confetti(160);
+    $("complimentBtn").onclick = () => setCompliment();
+    $("updateShipBtn").onclick = () => $("shipStatus").textContent = rand(shipStatuses);
 
-    // Memory wall render
-    const memList = $("memoryList");
-    memList.innerHTML = MEMORIES.map(m =>
-      `<div class="chip">${m.emoji} <b>${m.title}</b> <span>${m.text}</span></div>`
-    ).join("");
-
-    // Secret message
-    $("secretMsg").textContent = SECRET_MESSAGE;
-
-    // Fortune cookie
-    function setQuote(text){
-      $("quoteText").textContent = `“${text}”`;
-      $("quoteMeta").textContent = FROM_LINE;
-    }
-    $("newQuoteBtn").addEventListener("click", () => {
-      setQuote(rand(QUOTES));
-      burstConfetti(120);
-    });
-
-    // Copy quote
-    $("copyBtn").addEventListener("click", async () => {
-      const txt = $("quoteText").textContent.replace(/^“|”$/g,"") + "\n" + FROM_LINE;
-      try{
-        await navigator.clipboard.writeText(txt);
-        $("headline").textContent = "Copied! Send it to Vidu 💛";
-        setTimeout(()=> $("headline").textContent = "Tap the button for a love-thought made just for you, Vidu.", 1400);
-      }catch(e){
-        $("headline").textContent = "Copy didn’t work here — you can still select & copy manually 😊";
-        setTimeout(()=> $("headline").textContent = "Tap the button for a love-thought made just for you, Vidu.", 1800);
-      }
-    });
-
-    // Confetti controls
-    $("confettiBtn").addEventListener("click", () => burstConfetti(160));
-    $("giftConfettiBtn").addEventListener("click", () => burstConfetti(220));
-
-    // Gifts en route
-    $("updateShipBtn").addEventListener("click", () => {
-      $("shipStatus").textContent = rand(shipStatuses);
-    });
-    $("revealGiftBtn").addEventListener("click", () => {
-      $("giftHint").textContent = rand(giftHints);
-    });
-
-    // Compliment cannon
-    function setCompliment(){
-      $("complimentText").textContent = rand(COMPLIMENTS);
-    }
-    $("complimentBtn").addEventListener("click", () => {
-      setCompliment();
-      burstConfetti(60);
-    });
-    $("complimentBox").addEventListener("click", () => {
-      setCompliment();
-    });
-
-    // Quiz logic
-    let qIndex = 0;
-    let score = 0;
-    let attempts = 0;
-    let locked = false;
-
-    function renderQuestion(){
-      locked = false;
-      const q = QUIZ[qIndex];
-      $("quizQ").textContent = q.q;
-      $("options").innerHTML = "";
-      q.options.forEach((opt, idx) => {
-        const b = document.createElement("button");
-        b.className = "opt";
-        b.textContent = opt;
-        b.addEventListener("click", () => {
-          if(locked) return;
-          locked = true;
-          attempts++;
-          if(idx === q.a){
-            score++;
-            b.classList.add("correct");
-            burstConfetti(80);
-          }else{
-            b.classList.add("wrong");
-            // highlight correct
-            const children = [...$("options").children];
-            children[q.a]?.classList.add("correct");
-          }
-          $("score").textContent = `Score: ${score} / ${attempts}`;
-        });
-        $("options").appendChild(b);
-      });
-      $("score").textContent = `Score: ${score} / ${attempts}`;
-    }
-
-    $("nextQBtn").addEventListener("click", () => {
-      qIndex = (qIndex + 1) % QUIZ.length;
-      renderQuestion();
-    });
-    $("resetQuizBtn").addEventListener("click", () => {
-      qIndex = 0; score = 0; attempts = 0;
-      renderQuestion();
-    });
-
-    renderQuestion();
-
-    // Confetti engine
-    const confettiRoot = $("confetti");
-    function burstConfetti(count){
-      const colors = ["#ffd166","#ff6bd6","#6b9bff","#55efc4","#ffffff"];
+    function confetti(count){
+      const root = $("confetti");
+      const colors = ["#6bb7ff","#3fa9ff","#ffffff"];
       for(let i=0;i<count;i++){
-        const div = document.createElement("div");
-        div.className = "piece";
-        const left = Math.random()*100;
-        const dur = 2.6 + Math.random()*2.6;
-        const delay = Math.random()*0.15;
-        const size = 6 + Math.random()*10;
-
-        div.style.left = left + "vw";
-        div.style.width = size + "px";
-        div.style.height = (size*1.25) + "px";
-        div.style.background = colors[Math.floor(Math.random()*colors.length)];
-        div.style.animationDuration = dur + "s";
-        div.style.animationDelay = delay + "s";
-        div.style.transform = `translateY(-10px) rotate(${Math.random()*180}deg)`;
-        div.style.opacity = (0.65 + Math.random()*0.35).toFixed(2);
-
-        confettiRoot.appendChild(div);
-        setTimeout(()=> div.remove(), (dur+delay)*1000 + 200);
+        const d=document.createElement("div");
+        d.className="piece";
+        d.style.left=Math.random()*100+"vw";
+        d.style.background=colors[Math.floor(Math.random()*colors.length)];
+        d.style.animationDuration=(2+Math.random()*2)+"s";
+        root.appendChild(d);
+        setTimeout(()=>d.remove(),4000);
       }
     }
 
-    // Auto confetti on load
-    burstConfetti(160);
-    // Set initial quote & compliment
-    setQuote(rand(QUOTES));
+    setQuote();
     setCompliment();
+    confetti(140);
   </script>
 </body>
 </html>
