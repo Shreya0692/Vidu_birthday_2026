@@ -7,8 +7,10 @@
 
   <style>
     :root{
-      --bg1:#050b1e;
-      --bg2:#0b1a3a;
+      /* 1) Lighter background */
+      --bg1:#0b1b3f;
+      --bg2:#163c7a;
+
       --card:#ffffff14;
       --card2:#ffffff0f;
       --text:#f5f8ff;
@@ -22,7 +24,7 @@
 
       /* Mood glow (updated by JS) */
       --moodHue: 205;
-      --moodGlow: 0.22;
+      --moodGlow: 0.30; /* slightly stronger glow for lighter feel */
     }
 
     *{box-sizing:border-box}
@@ -32,8 +34,8 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
       color:var(--text);
       background:
-        radial-gradient(900px 500px at 20% 20%, hsla(var(--moodHue), 95%, 60%, var(--moodGlow)), transparent 60%),
-        radial-gradient(800px 500px at 80% 30%, hsla(calc(var(--moodHue) + 12), 95%, 58%, calc(var(--moodGlow) - 0.04)), transparent 60%),
+        radial-gradient(900px 500px at 20% 20%, hsla(var(--moodHue), 95%, 70%, var(--moodGlow)), transparent 60%),
+        radial-gradient(800px 500px at 80% 30%, hsla(calc(var(--moodHue) + 12), 95%, 68%, calc(var(--moodGlow) - 0.06)), transparent 60%),
         linear-gradient(135deg, var(--bg1), var(--bg2));
       min-height:100vh;
       overflow-x:hidden;
@@ -42,7 +44,7 @@
     }
 
     .stars{
-      position:fixed; inset:0; pointer-events:none; opacity:.28;
+      position:fixed; inset:0; pointer-events:none; opacity:.22; /* a bit lighter */
       background-image:
         radial-gradient(1.5px 1.5px at 40px 60px, #fff, transparent 40%),
         radial-gradient(1.5px 1.5px at 120px 140px, #fff, transparent 40%),
@@ -263,7 +265,7 @@
         You’re going to crush <b>CA Final</b>, and you’ll do it with the same calm strength and goodness you bring to everyone.
       </div>
 
-      <!-- Mood Meter + Vibe Mixer live here (replacing the old pills) -->
+      <!-- Mood Meter + Vibe Mixer (replacing the old pills) -->
       <div class="moodWrap">
         <div class="moodTitle">Mood Meter 🎚️</div>
         <div class="moodTopRow">
@@ -303,10 +305,9 @@
         <h2>Birthday Fortune 💙</h2>
         <p id="headline">Tap for a love-thought made just for you.</p>
 
+        <!-- 2) Removed "Copy" and "More Confetti" buttons -->
         <div class="btnrow">
           <button id="newQuoteBtn">Open a Fortune ✨</button>
-          <button class="ghost" id="confettiBtn">More Confetti 🎉</button>
-          <button class="ghost" id="copyBtn">Copy 📋</button>
         </div>
 
         <div class="quoteBox" aria-live="polite">
@@ -322,10 +323,11 @@
 
         <div class="photoGrid">
 
+          <!-- 3) Updated image paths to match your filenames -->
           <div class="photoCard" onclick="flipCard(this)">
             <div class="photoInner">
               <div class="photoFace photoFront">
-                <img src="images/vidu1.jpg" alt="Vidu memory 1">
+                <img src="images/Vidu02.jpg" alt="Vidu memory 02">
               </div>
               <div class="photoFace photoBack">
                 <div class="backText">
@@ -339,7 +341,7 @@
           <div class="photoCard" onclick="flipCard(this)">
             <div class="photoInner">
               <div class="photoFace photoFront">
-                <img src="images/vidu2.jpg" alt="Vidu memory 2">
+                <img src="images/Vidu03.jpg" alt="Vidu memory 03">
               </div>
               <div class="photoFace photoBack">
                 <div class="backText">
@@ -353,7 +355,7 @@
           <div class="photoCard" onclick="flipCard(this)">
             <div class="photoInner">
               <div class="photoFace photoFront">
-                <img src="images/vidu3.jpg" alt="Vidu memory 3">
+                <img src="images/Vidu04.jpg" alt="Vidu memory 04">
               </div>
               <div class="photoFace photoBack">
                 <div class="backText">
@@ -375,10 +377,10 @@
           Very soon… gifts arrive (and we celebrate again) 💙
         </p>
 
+        <!-- 4) Removed gift details -->
         <div class="quoteBox">
           <div class="quoteText">
-            ⌚ Apple Watch + 🌸 Perfume are on the way —
-            arriving a little after today, just so your birthday lasts longer.
+            🎁 Gifts are arriving soon — and that means bonus celebration days.
           </div>
         </div>
 
@@ -468,12 +470,12 @@
     function applyMood(v){
       // Background glow shift (still blue palette, just intensity/hue)
       const hue = 200 + Math.round((v/100) * 18); // 200–218
-      const glow = 0.18 + (v/100) * 0.16;       // 0.18–0.34
+      const glow = 0.26 + (v/100) * 0.18;       // 0.26–0.44 (brighter overall)
       document.documentElement.style.setProperty("--moodHue", String(hue));
       document.documentElement.style.setProperty("--moodGlow", glow.toFixed(2));
       moodReadout.textContent = moodText(v);
 
-      // Update fortune quote to match mood bucket (but do not force confetti)
+      // Update fortune quote to match mood bucket
       setQuoteFromMood();
     }
 
@@ -486,9 +488,7 @@
     });
 
     // --- Fortune section ---
-    const SIGN_OFF = "— from your biggest fan 💙";
     const quoteText = $("quoteText");
-    const headline = $("headline");
 
     function currentFortunePool(){
       const v = Number(moodSlider.value);
@@ -503,20 +503,6 @@
     $("newQuoteBtn").addEventListener("click", () => {
       setQuoteFromMood();
       confetti(130);
-    });
-
-    $("confettiBtn").addEventListener("click", () => confetti(180));
-
-    $("copyBtn").addEventListener("click", async () => {
-      const txt = quoteText.textContent + "\n" + SIGN_OFF;
-      try{
-        await navigator.clipboard.writeText(txt);
-        headline.textContent = "Copied 💙 Send it to Vidu!";
-        setTimeout(()=> headline.textContent = "Tap for a love-thought made just for you.", 1400);
-      }catch(e){
-        headline.textContent = "Copy didn’t work here — you can still select & copy manually 😊";
-        setTimeout(()=> headline.textContent = "Tap for a love-thought made just for you.", 1800);
-      }
     });
 
     // --- Vibe Mixer (interactive tags) ---
