@@ -408,6 +408,7 @@
 
 <script>
   /* Quiz logic (unchanged) */
+  /* Quiz logic (NO LOOP + must answer before next) */
   const QUIZ = [
     {q:"What will you get as a gift this year?",a:2,o:["Apple Watch","Versace Perfume","Both","Just hugs and love"]},
     {q:"How much do we love you?",a:3,o:["Normal","A lot","Infinity","More than infinity 💙"]},
@@ -416,32 +417,72 @@
     {q:"Best birthday plan?",a:2,o:["No cake","Only study","Cake + pizza + family","Sleep"]}
   ];
 
-  let i=0,score=0,attempts=0,locked=false;
-  const qEl=document.getElementById("quizQ");
-  const optEl=document.getElementById("options");
-  const scoreEl=document.getElementById("score");
+  let i = 0;
+  let score = 0;
+  let answered = false;
+  let done = false;
+
+  const qEl = document.getElementById("quizQ");
+  const optEl = document.getElementById("options");
+  const scoreEl = document.getElementById("score");
+  const nextBtn = document.getElementById("nextBtn");
 
   function render(){
-    locked=false;
-    const q=QUIZ[i];
-    qEl.textContent=q.q;
-    optEl.innerHTML="";
-    q.o.forEach((t,idx)=>{
-      const b=document.createElement("button");
-      b.className="opt";
-      b.textContent=t;
-      b.onclick=()=>{
-        if(locked)return;
-        locked=true;
-        attempts++;
-        if(idx===q.a){score++;b.classList.add("correct")}
-        else{b.classList.add("wrong");optEl.children[q.a].classList.add("correct")}
-        scoreEl.textContent=`Score: ${score} / ${attempts}`;
+    answered = false;
+    const q = QUIZ[i];
+
+    qEl.textContent = q.q;
+    optEl.innerHTML = "";
+    scoreEl.textContent = `Score: ${score} / ${QUIZ.length}`;
+    nextBtn.textContent = (i === QUIZ.length - 1) ? "Finish ➜" : "Next Question ➜";
+    nextBtn.disabled = true;
+    nextBtn.style.opacity = "0.6";
+
+    q.o.forEach((text, idx) => {
+      const btn = document.createElement("button");
+      btn.className = "opt";
+      btn.textContent = text;
+
+      btn.onclick = () => {
+        if(answered || done) return;
+        answered = true;
+        nextBtn.disabled = false;
+        nextBtn.style.opacity = "1";
+
+        if(idx === q.a){
+          score++;
+          btn.classList.add("correct");
+        } else {
+          btn.classList.add("wrong");
+          optEl.children[q.a].classList.add("correct");
+        }
+
+        scoreEl.textContent = `Score: ${score} / ${QUIZ.length}`;
       };
-      optEl.appendChild(b);
+
+      optEl.appendChild(btn);
     });
   }
-  document.getElementById("nextBtn").onclick=()=>{i=(i+1)%QUIZ.length;render()};
+
+  function finishQuiz(){
+    done = true;
+    qEl.textContent = "Quiz complete 🎉";
+    optEl.innerHTML = "";
+    scoreEl.textContent = `Final Score: ${score} / ${QUIZ.length} — You win, today and everyday! `;
+    nextBtn.style.display = "none";
+  }
+
+  nextBtn.onclick = () => {
+    if(!answered) return;
+
+    if(i < QUIZ.length - 1){
+      i++;
+      render();
+    } else {
+      finishQuiz();
+    }
+  };
+
   render();
 
   /* Auto-load images (unchanged) */
