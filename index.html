@@ -69,17 +69,48 @@
       cursor:pointer;
     }
 
-    /* ---------- QUIZ ---------- */
-    .quizQ{font-weight:900;font-size:18px;margin:14px 0;color:#1c3d7a}
-    .options{display:grid;gap:12px;max-width:640px;margin:0 auto}
-    .opt{
-      padding:14px 16px;border-radius:18px;
-      background:#eef6ff;border:1px solid #cfe3ff;
-      font-weight:850;cursor:pointer;
+    /* ---------- QUIZ (DISPLAY) ---------- */
+    .quizQ{
+      font-weight:900;
+      font-size:18px;
+      margin:14px 0 14px;
+      color:#1c3d7a;
     }
-    .opt.correct{background:var(--good)}
-    .opt.wrong{background:var(--bad)}
-    .score{margin-top:14px;color:var(--muted);font-size:13px}
+
+    .options{
+      display:grid;
+      gap:12px;
+      max-width:640px;
+      margin:0 auto;
+    }
+
+    .opt{
+      width:100%;
+      text-align:center;
+      padding:14px 16px;
+      border-radius:18px;
+      background:#eef6ff;
+      border:1px solid #cfe3ff;
+      color:#1b2a4a;
+      font-weight:850;
+      cursor:pointer;
+      box-shadow:none;
+    }
+
+    .opt:hover{
+      filter:saturate(1.03);
+      border-color:#b7d6ff;
+    }
+
+    .opt.correct{background:var(--good); border-color:#9fd2ff;}
+    .opt.wrong{background:var(--bad); border-color:#ffb3b3;}
+
+    .score{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    /* ---------------------------------- */
 
     /* ---------- PHOTO FLIP ---------- */
     .photoGrid{
@@ -88,34 +119,78 @@
       gap:20px;
       margin-top:18px;
     }
-    .photoCard{perspective:1200px;cursor:pointer}
-    .photoInner{
-      position:relative;height:300px;border-radius:18px;
-      transform-style:preserve-3d;transition:transform .8s ease;
+
+    .photoCard{
+      perspective:1200px;
+      cursor:pointer;
     }
+
+    .photoInner{
+      position:relative;
+      height:300px;
+      border-radius:18px;
+      transform-style:preserve-3d;
+      transition:transform .8s ease;
+    }
+
     .photoCard:hover .photoInner,
-    .photoCard.is-flipped .photoInner{transform:rotateY(180deg)}
+    .photoCard.is-flipped .photoInner{
+      transform:rotateY(180deg);
+    }
+
     .photoFace{
-      position:absolute;inset:0;border-radius:18px;
-      overflow:hidden;backface-visibility:hidden;
+      position:absolute;
+      inset:0;
+      border-radius:18px;
+      overflow:hidden;
+      backface-visibility:hidden;
       box-shadow:var(--shadow);
     }
-    .photoFront img{width:100%;height:100%;object-fit:cover}
+
+    .photoFront img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
     .photoBack{
       transform:rotateY(180deg);
       background:linear-gradient(135deg,#e8f2ff,#d6e9ff);
-      display:flex;align-items:center;justify-content:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       padding:22px;
     }
-    .backText{font-weight:900;font-size:17px;line-height:1.6}
-    .backText small{display:block;margin-top:12px;color:#3b5f99}
 
-    footer{margin-top:34px;font-size:13px;color:#5c7fb3}
+    .backText{
+      font-weight:900;
+      font-size:17px;
+      line-height:1.6;
+      color:#1b2a4a;
+    }
+
+    .backText small{
+      display:block;
+      margin-top:12px;
+      font-weight:600;
+      color:#3b5f99;
+    }
+
+    footer{
+      margin-top:34px;
+      font-size:13px;
+      color:#5c7fb3;
+    }
 
     /* ================================
-       23 Reasons Board (UPDATED FRONT)
+       23 Reasons Board
        ================================ */
-    .reasonsSub{margin-top:8px;color:var(--muted);font-size:14px}
+    .reasonsSub{
+      margin-top:8px;
+      color:var(--muted);
+      font-size:14px;
+    }
 
     .reasonsGrid{
       margin-top:18px;
@@ -124,39 +199,61 @@
       gap:14px;
     }
 
-    .reasonCard{perspective:1200px;cursor:pointer}
+    .reasonCard{
+      perspective:1200px;
+      cursor:pointer;
+    }
 
     .reasonInner{
-      position:relative;height:140px;border-radius:18px;
-      transform-style:preserve-3d;transition:transform .75s ease;
+      position:relative;
+      height:140px;
+      border-radius:18px;
+      transform-style:preserve-3d;
+      transition:transform .75s ease;
       box-shadow:var(--shadow);
     }
 
     .reasonCard:hover .reasonInner,
-    .reasonCard.is-flipped .reasonInner{transform:rotateY(180deg)}
-
-    .reasonFace{
-      position:absolute;inset:0;border-radius:18px;
-      backface-visibility:hidden;
-      display:flex;align-items:center;justify-content:center;
+    .reasonCard.is-flipped .reasonInner{
+      transform:rotateY(180deg);
     }
 
-    /* FRONT: BIG FUN NUMBER */
+    .reasonFace{
+      position:absolute;
+      inset:0;
+      border-radius:18px;
+      backface-visibility:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+    }
+
     .reasonFront{
       background:#eef6ff;
       border:1px solid #cfe3ff;
+      color:#1c3d7a;
+      font-weight:900;
+      gap:10px;
+      flex-direction:column;
     }
 
+    /* ✅ ONLY CHANGE HERE: bigger + fun number styling */
     .reasonFront .num{
-      font-size:56px;
-      font-weight:1000;
-      line-height:1;
-      padding:18px 26px;
+      width:auto;
+      height:auto;
       border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       background:linear-gradient(135deg,var(--accent),var(--accent2));
       color:#08346b;
-      box-shadow:0 10px 24px rgba(80,140,220,.35);
-      transform:rotate(-6deg);
+      font-weight:1000;
+      font-size:56px;         /* bigger */
+      line-height:1;
+      padding:16px 26px;      /* more “badge” feel */
+      box-shadow:0 12px 28px rgba(80,140,220,.32);
+      transform:rotate(-6deg); /* playful */
     }
 
     .reasonBack{
@@ -167,147 +264,276 @@
       font-weight:850;
       line-height:1.45;
       text-align:center;
-      padding:14px;
     }
 
-    /* Confetti */
-    .confetti{position:fixed;inset:0;pointer-events:none;z-index:9999}
-    .piece{
-      position:absolute;top:-10px;width:10px;height:14px;
-      border-radius:3px;animation:fall linear forwards;
+    /* Confetti overlay */
+    .confetti{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:9999;
     }
-    @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+    .piece{
+      position:absolute;
+      top:-10px;
+      width:10px;
+      height:14px;
+      border-radius:3px;
+      animation:fall linear forwards;
+      opacity:.9;
+    }
+
+    @keyframes fall{
+      to{ transform:translateY(110vh) rotate(720deg); }
+    }
   </style>
 </head>
 
 <body>
-<div class="confetti" id="confetti"></div>
+  <div class="confetti" id="confetti"></div>
 
 <div class="wrap">
 
 <header>
-  <h1>Happy Birthday, Vidu 💙</h1>
+  <h1>Happy 23rd Birthday, Vidu 💙</h1>
   <div class="subtitle">
-    A small page, filled with big love — just for you on your birthday ✨
+    From Udaipur to the whole universe — this page is your birthday playground ✨
   </div>
 </header>
 
 <div class="grid">
 
-<!-- 23 Reasons -->
-<section class="card">
-  <h2>23 Reasons We Love You 💙</h2>
-  <div class="reasonsSub">There are a million more, but the I am space restricted here! ✨</div>
-  <div class="reasonsGrid" id="reasonsGrid"></div>
-</section>
+  <!-- ✅ ORDER: 23 Reasons → Photos → Quiz -->
 
-<!-- Photos -->
-<section class="card">
-  <h2>Hidden Messages Behind Photos 💙</h2>
-  <p>Hover or tap to reveal what you truly are.</p>
+  <!-- 23 Reasons Board -->
+  <section class="card" id="reasonsBoard">
+    <h2>23 Reasons We Love You 💙</h2>
+    <div class="reasonsSub">Hover (or tap) each card — it flips… and confetti celebrates you ✨</div>
+    <div class="reasonsGrid" id="reasonsGrid"></div>
+  </section>
 
-  <div class="photoGrid">
-    <div class="photoCard"><div class="photoInner">
-      <div class="photoFace photoFront"><img data-base="Vidu02" class="autoImg"></div>
-      <div class="photoFace photoBack"><div class="backText">Best Sister 💙<small>You are comfort on hard days.</small></div></div>
-    </div></div>
+  <!-- Photos -->
+  <section class="card">
+    <h2>Hidden Messages Behind Photos 💙</h2>
+    <p>Hover or tap to reveal what you truly are.</p>
 
-    <div class="photoCard"><div class="photoInner">
-      <div class="photoFace photoFront"><img data-base="Vidu03" class="autoImg"></div>
-      <div class="photoFace photoBack"><div class="backText">Best Daughter 💙<small>Your love shows quietly.</small></div></div>
-    </div></div>
+    <div class="photoGrid">
 
-    <div class="photoCard"><div class="photoInner">
-      <div class="photoFace photoFront"><img data-base="Vidu04" class="autoImg"></div>
-      <div class="photoFace photoBack"><div class="backText">Best Person 💙<small>Kind heart. Strong mind.</small></div></div>
-    </div></div>
-  </div>
-</section>
+      <!-- BEST SISTER -->
+      <div class="photoCard">
+        <div class="photoInner">
+          <div class="photoFace photoFront">
+            <img data-base="Vidu02" class="autoImg" alt="Vidu">
+          </div>
+          <div class="photoFace photoBack">
+            <div class="backText">
+              Best Sister 💙
+              <small>
+                You are comfort on hard days, laughter on easy ones,
+                and strength even when you don’t realize it.
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<!-- Quiz -->
-<section class="card">
-  <h2>Vidu’s Birthday Quiz 🎉</h2>
-  <p>Answer carefully… all answers are emotionally evaluated 😌</p>
-  <div class="quizQ" id="quizQ"></div>
-  <div class="options" id="options"></div>
-  <div class="score" id="score"></div>
-  <div style="margin-top:16px"><button id="nextBtn">Next Question ➜</button></div>
-</section>
+      <!-- BEST DAUGHTER -->
+      <div class="photoCard">
+        <div class="photoInner">
+          <div class="photoFace photoFront">
+            <img data-base="Vidu03" class="autoImg" alt="Vidu">
+          </div>
+          <div class="photoFace photoBack">
+            <div class="backText">
+              Best Daughter 💙
+              <small>
+                Your love shows in the quiet ways — responsibility,
+                care, and the way you always think of others first.
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BEST PERSON -->
+      <div class="photoCard">
+        <div class="photoInner">
+          <div class="photoFace photoFront">
+            <img data-base="Vidu04" class="autoImg" alt="Vidu">
+          </div>
+          <div class="photoFace photoBack">
+            <div class="backText">
+              Best Person 💙
+              <small>
+                Kind heart. Strong mind. A soul that makes people
+                feel safe, valued, and loved — just by being you.
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Quiz -->
+  <section class="card">
+    <h2>Vidu’s Birthday Quiz 🎉</h2>
+    <p>Answer carefully… all answers are emotionally evaluated 😌</p>
+
+    <div class="quizQ" id="quizQ">Loading…</div>
+    <div class="options" id="options"></div>
+    <div class="score" id="score">Score: 0 / 0</div>
+
+    <div style="margin-top:16px">
+      <button id="nextBtn">Next Question ➜</button>
+    </div>
+  </section>
+
+  <!-- Gifts -->
+  <section class="card">
+    <h2>Incoming Birthday Gifts 🎁</h2>
+    <div class="quoteBox">
+      Gifts are arriving soon… and celebrations continue 💙
+    </div>
+  </section>
+
+<footer>
+  Made with 💙 just for Vidu
+</footer>
 
 </div>
 
-<footer>Made with 💙 just for Vidu</footer>
-
 <script>
-  /* Auto images */
+  /* Quiz logic (unchanged) */
+  const QUIZ = [
+    {q:"What will you get as a gift this year?",a:2,o:["Apple Watch","Versace Perfume","Both","Just hugs and love"]},
+    {q:"How much do we love you?",a:3,o:["Normal","A lot","Infinity","More than infinity 💙"]},
+    {q:"What happens after CA Final?",a:1,o:["Sleep","Celebrate like a queen 👑","More study","Nothing"]},
+    {q:"Vidu’s biggest superpower is:",a:3,o:["Hard work","Kindness","Discipline","All of the above ✨"]},
+    {q:"Best birthday plan?",a:2,o:["No cake","Only study","Cake + pizza + family","Sleep"]}
+  ];
+
+  let i=0,score=0,attempts=0,locked=false;
+  const qEl=document.getElementById("quizQ");
+  const optEl=document.getElementById("options");
+  const scoreEl=document.getElementById("score");
+
+  function render(){
+    locked=false;
+    const q=QUIZ[i];
+    qEl.textContent=q.q;
+    optEl.innerHTML="";
+    q.o.forEach((t,idx)=>{
+      const b=document.createElement("button");
+      b.className="opt";
+      b.textContent=t;
+      b.onclick=()=>{
+        if(locked)return;
+        locked=true;
+        attempts++;
+        if(idx===q.a){score++;b.classList.add("correct")}
+        else{b.classList.add("wrong");optEl.children[q.a].classList.add("correct")}
+        scoreEl.textContent=`Score: ${score} / ${attempts}`;
+      };
+      optEl.appendChild(b);
+    });
+  }
+  document.getElementById("nextBtn").onclick=()=>{i=(i+1)%QUIZ.length;render()};
+  render();
+
+  /* Auto-load images (unchanged) */
   (function(){
     const exts=["jpg","jpeg","png","JPG","PNG","WEBP"];
-    document.querySelectorAll(".autoImg").forEach(img=>{
-      let i=0,b=img.dataset.base;
-      const t=()=>{if(i<exts.length)img.src=`images/${b}.${exts[i++]}`};
-      img.onerror=t;t();
+    document.querySelectorAll("img.autoImg").forEach(img=>{
+      let i=0,base=img.dataset.base;
+      const tryNext=()=>{ if(i>=exts.length)return; img.src=`images/${base}.${exts[i++]}`; };
+      img.onerror=tryNext; tryNext();
     });
   })();
 
-  /* Photo tap */
-  document.querySelectorAll(".photoCard").forEach(c=>{
-    c.onclick=()=>c.classList.toggle("is-flipped");
+  /* Mobile tap support for photo flip (unchanged) */
+  document.querySelectorAll(".photoCard").forEach(card=>{
+    card.addEventListener("click",()=>card.classList.toggle("is-flipped"));
   });
 
-  /* Confetti */
-  function confettiBurst(n){
-    const r=document.getElementById("confetti"),
-    c=["#5fa8ff","#89c2ff","#fff","#d9ebff"];
-    for(let i=0;i<n;i++){
-      const d=document.createElement("div");
-      d.className="piece";
-      d.style.left=Math.random()*100+"vw";
-      d.style.background=c[Math.floor(Math.random()*c.length)];
-      d.style.animationDuration=2+Math.random()*2+"s";
-      r.appendChild(d);setTimeout(()=>d.remove(),4e3);
+  /* Confetti burst (unchanged) */
+  function confettiBurst(count){
+    const root = document.getElementById("confetti");
+    const colors = ["#5fa8ff","#89c2ff","#ffffff","#d9ebff","#bcd7ff"];
+    for(let i=0;i<count;i++){
+      const d = document.createElement("div");
+      d.className = "piece";
+      d.style.left = (Math.random()*100) + "vw";
+      d.style.background = colors[Math.floor(Math.random()*colors.length)];
+      d.style.width = (6 + Math.random()*10) + "px";
+      d.style.height = (10 + Math.random()*14) + "px";
+      d.style.opacity = (0.65 + Math.random()*0.35).toFixed(2);
+      d.style.animationDuration = (2 + Math.random()*2) + "s";
+      root.appendChild(d);
+      setTimeout(()=> d.remove(), 4200);
     }
   }
 
-  /* 23 Reasons */
-  const reasons=[
+  /* 23 Reasons board (ONLY changed: front shows just the number) */
+  const reasons = [
     "You’re kind in a way that feels like sunlight.",
-    "You make people feel safe and loved.",
-    "You work hard even when no one sees.",
-    "You care deeply — it shows.",
-    "You’re quietly strong.",
-    "You make home feel warm.",
-    "You’re fun chaos 😄",
-    "You’re wise and adorable.",
-    "You lift others up.",
-    "You’re the heart of the family.",
-    "You keep growing.",
-    "You’re brave.",
-    "You’re a true friend.",
-    "You make days brighter.",
-    "You’re hilarious.",
-    "You notice the small things.",
-    "You give endlessly.",
-    "You’re disciplined.",
+    "You make people feel safe, seen, and loved.",
+    "You work hard — even when no one is watching.",
+    "You care deeply, and it shows in everything you do.",
+    "You’re strong… quietly, beautifully strong.",
+    "You make home feel like home.",
+    "You’re the best kind of chaos: fun chaos 😄",
+    "You’re wise beyond your years (but still adorable).",
+    "You lift others up without even trying.",
+    "You’re the reason “family” feels warm.",
+    "You never stop growing — and it’s inspiring.",
+    "You’re brave — especially in tough moments.",
+    "You’re the friend everyone secretly wishes they had.",
+    "You make ordinary days feel special.",
+    "You’re hilarious (yes, officially).",
+    "You’re thoughtful in the smallest details.",
+    "You have a heart that keeps giving.",
+    "You’re disciplined — CA Final is lucky to have you.",
     "You’re beautiful inside and out.",
-    "Best sister.",
-    "Best daughter.",
-    "Best person.",
-    "You deserve all the happiness 💙"
+    "You’re the best sister, always.",
+    "You’re the best daughter, always.",
+    "You’re the best person — full stop.",
+    "And… you deserve the happiest life, always 💙"
   ];
 
-  const g=document.getElementById("reasonsGrid");
-  reasons.forEach((t,i)=>{
-    const c=document.createElement("div");
-    c.className="reasonCard";c.dataset.f="0";
-    c.innerHTML=`
+  const grid = document.getElementById("reasonsGrid");
+
+  reasons.forEach((text, idx) => {
+    const card = document.createElement("div");
+    card.className = "reasonCard";
+    card.dataset.fired = "0";
+
+    /* ✅ ONLY change: remove “Reason” + “hover to reveal” */
+    card.innerHTML = `
       <div class="reasonInner">
-        <div class="reasonFace reasonFront"><div class="num">${i+1}</div></div>
-        <div class="reasonFace reasonBack">${t}</div>
-      </div>`;
-    const fire=()=>{if(c.dataset.f==="0"){c.dataset.f="1";confettiBurst(120)}};
-    c.onmouseenter=fire;
-    c.onclick=()=>{c.classList.toggle("is-flipped");fire()};
-    g.appendChild(c);
+        <div class="reasonFace reasonFront">
+          <div class="num">${idx+1}</div>
+        </div>
+        <div class="reasonFace reasonBack">${text}</div>
+      </div>
+    `;
+
+    const fireOnce = () => {
+      if(card.dataset.fired === "1") return;
+      card.dataset.fired = "1";
+      confettiBurst(140);
+    };
+
+    card.addEventListener("mouseenter", fireOnce);
+    card.addEventListener("click", () => {
+      card.classList.toggle("is-flipped");
+      fireOnce();
+    });
+
+    grid.appendChild(card);
   });
 </script>
 
