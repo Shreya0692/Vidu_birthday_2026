@@ -7,39 +7,34 @@
 
   <style>
     :root{
-      /* 🌤 SUPER LIGHT THEME */
+      /* SUPER LIGHT WHITE ON BLUE */
       --bg1:#eef6ff;
       --bg2:#dfeeff;
 
       --card:#ffffff;
-      --card2:#ffffff;
-
       --text:#1b2a4a;
       --muted:#4b6aa3;
 
       --accent:#5fa8ff;
       --accent2:#89c2ff;
 
-      --shadow: 0 18px 40px rgba(40,80,140,.18);
+      --shadow:0 18px 40px rgba(40,80,140,.18);
       --radius:22px;
 
       --good:#dff1ff;
       --bad:#ffe2e2;
-
-      --moodHue:210;
-      --moodGlow:.35;
     }
 
     *{box-sizing:border-box}
 
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
       color:var(--text);
       background:
-        radial-gradient(900px 500px at 20% 20%, hsla(var(--moodHue),100%,85%,var(--moodGlow)), transparent 60%),
-        radial-gradient(900px 500px at 80% 30%, hsla(calc(var(--moodHue)+10),100%,88%,.35), transparent 60%),
-        linear-gradient(135deg, var(--bg1), var(--bg2));
+        radial-gradient(900px 500px at 20% 20%, #d9ebff, transparent 60%),
+        radial-gradient(900px 500px at 80% 30%, #edf5ff, transparent 60%),
+        linear-gradient(135deg,var(--bg1),var(--bg2));
       min-height:100vh;
       text-align:center;
     }
@@ -49,7 +44,6 @@
     h1{
       margin:0;
       font-size:clamp(34px,4vw,46px);
-      letter-spacing:-.02em;
       color:#123a7a;
     }
 
@@ -71,10 +65,7 @@
       padding:26px;
     }
 
-    h2{
-      margin:0 0 12px;
-      color:#1c3d7a;
-    }
+    h2{margin:0 0 12px;color:#1c3d7a}
 
     p{margin:0;color:var(--muted);line-height:1.6}
 
@@ -97,12 +88,6 @@
       box-shadow:0 10px 24px rgba(80,140,220,.35);
     }
 
-    .ghost{
-      background:#eaf3ff;
-      color:#1b4d8f;
-      box-shadow:none;
-    }
-
     .quoteBox{
       margin-top:16px;
       padding:18px;
@@ -116,7 +101,7 @@
 
     .quoteText{font-size:17px;line-height:1.65}
 
-    /* Mood Meter */
+    /* Mood + Vibe */
     .moodWrap,.vibeBox{
       margin-top:18px;
       padding:18px;
@@ -161,11 +146,9 @@
       border-radius:18px;
       background:#f4f9ff;
       border:1px dashed #bcd7ff;
-      color:#1b2a4a;
       line-height:1.6;
     }
 
-    /* Vibe tags */
     .vibeTags{
       display:flex;
       justify-content:center;
@@ -232,7 +215,6 @@
       align-items:center;
       justify-content:center;
       padding:20px;
-      color:#1b2a4a;
     }
 
     .backText{font-weight:900}
@@ -260,7 +242,7 @@
     <div class="moodTitle">Mood Meter 🎚️</div>
     <div class="moodTopRow">
       <div class="moodLabel">📚 Study</div>
-      <input type="range" value="45">
+      <input id="moodSlider" type="range" min="0" max="100" value="45">
       <div class="moodLabel">🎉 Party</div>
     </div>
     <div class="moodReadout">Balanced mode: study + chill + dessert 💙</div>
@@ -268,7 +250,7 @@
 
   <div class="vibeBox">
     <div class="vibeTitle">Vidu Vibe Mixer 💙</div>
-    <div class="vibeTags">
+    <div class="vibeTags" id="vibeTags">
       <div class="tag active">📍 Udaipur</div>
       <div class="tag">📚 CA Final</div>
       <div class="tag">🍕 Pizza</div>
@@ -289,9 +271,7 @@
     <button>Open a Fortune ✨</button>
   </div>
   <div class="quoteBox">
-    <div class="quoteText">
-      23 looks incredibly good on you 💙
-    </div>
+    <div class="quoteText">23 looks incredibly good on you 💙</div>
   </div>
 </section>
 
@@ -303,13 +283,10 @@
     <div class="photoCard">
       <div class="photoInner">
         <div class="photoFace photoFront">
-          <img src="images/Vidu02.jpg">
+          <img data-base="Vidu02" class="autoImg" alt="Vidu memory 02">
         </div>
         <div class="photoFace photoBack">
-          <div class="backText">
-            Best sister 💙
-            <small>You make life lighter.</small>
-          </div>
+          <div class="backText">Best sister 💙<small>You make life lighter.</small></div>
         </div>
       </div>
     </div>
@@ -317,13 +294,10 @@
     <div class="photoCard">
       <div class="photoInner">
         <div class="photoFace photoFront">
-          <img src="images/Vidu03.jpg">
+          <img data-base="Vidu03" class="autoImg" alt="Vidu memory 03">
         </div>
         <div class="photoFace photoBack">
-          <div class="backText">
-            Best daughter 💙
-            <small>Your love shows everywhere.</small>
-          </div>
+          <div class="backText">Best daughter 💙<small>Your love shows everywhere.</small></div>
         </div>
       </div>
     </div>
@@ -331,13 +305,10 @@
     <div class="photoCard">
       <div class="photoInner">
         <div class="photoFace photoFront">
-          <img src="images/Vidu04.jpg">
+          <img data-base="Vidu04" class="autoImg" alt="Vidu memory 04">
         </div>
         <div class="photoFace photoBack">
-          <div class="backText">
-            Best person 💙
-            <small>Kind. Strong. Beautiful.</small>
-          </div>
+          <div class="backText">Best person 💙<small>Kind. Strong. Beautiful.</small></div>
         </div>
       </div>
     </div>
@@ -358,5 +329,28 @@
 </footer>
 
 </div>
+
+<script>
+  /* Auto-load images with unknown extension/case */
+  (function(){
+    const exts=["jpg","jpeg","png","webp","JPG","JPEG","PNG","WEBP"];
+    document.querySelectorAll("img.autoImg").forEach(img=>{
+      const base=img.dataset.base;
+      let i=0;
+      const tryNext=()=>{
+        if(i>=exts.length)return;
+        img.src=`images/${base}.${exts[i++]}`;
+      };
+      img.onerror=tryNext;
+      tryNext();
+    });
+  })();
+
+  /* Flip on tap (mobile) */
+  document.querySelectorAll(".photoCard").forEach(c=>{
+    c.addEventListener("click",()=>c.classList.toggle("is-flipped"));
+  });
+</script>
+
 </body>
 </html>
