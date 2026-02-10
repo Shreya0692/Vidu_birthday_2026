@@ -59,6 +59,59 @@
     h2{margin:0 0 12px;color:#1c3d7a}
     p{margin:0;color:var(--muted);line-height:1.6}
 
+    button{
+      border:0;
+      padding:12px 18px;
+      border-radius:18px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#08346b;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    /* ---------- QUIZ (FIXED DISPLAY ONLY) ---------- */
+    .quizQ{
+      font-weight:900;
+      font-size:18px;
+      margin:14px 0 14px;
+      color:#1c3d7a;
+    }
+
+    .options{
+      display:grid;
+      gap:12px;
+      max-width:640px;
+      margin:0 auto;
+    }
+
+    .opt{
+      width:100%;
+      text-align:center;
+      padding:14px 16px;
+      border-radius:18px;
+      background:#eef6ff;
+      border:1px solid #cfe3ff;
+      color:#1b2a4a;
+      font-weight:850;
+      cursor:pointer;
+      box-shadow:none;
+    }
+
+    .opt:hover{
+      filter:saturate(1.03);
+      border-color:#b7d6ff;
+    }
+
+    .opt.correct{background:var(--good); border-color:#9fd2ff;}
+    .opt.wrong{background:var(--bad); border-color:#ffb3b3;}
+
+    .score{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    /* --------------------------------------------- */
+
     /* ---------- PHOTO FLIP (RESTORED) ---------- */
     .photoGrid{
       display:grid;
@@ -80,7 +133,6 @@
       transition:transform .8s ease;
     }
 
-    /* Hover for desktop, tap for mobile */
     .photoCard:hover .photoInner,
     .photoCard.is-flipped .photoInner{
       transform:rotateY(180deg);
@@ -130,10 +182,119 @@
       font-size:13px;
       color:#5c7fb3;
     }
+
+    /* ================================
+       ADDITION: 23 Reasons Board
+       ================================ */
+    .reasonsSub{
+      margin-top:8px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .reasonsGrid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+      gap:14px;
+    }
+
+    .reasonCard{
+      perspective:1200px;
+      cursor:pointer;
+    }
+
+    .reasonInner{
+      position:relative;
+      height:140px;
+      border-radius:18px;
+      transform-style:preserve-3d;
+      transition:transform .75s ease;
+      box-shadow:var(--shadow);
+    }
+
+    .reasonCard:hover .reasonInner,
+    .reasonCard.is-flipped .reasonInner{
+      transform:rotateY(180deg);
+    }
+
+    .reasonFace{
+      position:absolute;
+      inset:0;
+      border-radius:18px;
+      backface-visibility:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+    }
+
+    .reasonFront{
+      background:#eef6ff;
+      border:1px solid #cfe3ff;
+      color:#1c3d7a;
+      font-weight:900;
+      gap:10px;
+      flex-direction:column;
+    }
+
+    .reasonFront .num{
+      width:36px;
+      height:36px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#08346b;
+      font-weight:900;
+    }
+
+    .reasonFront .hint{
+      font-size:12px;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .reasonBack{
+      transform:rotateY(180deg);
+      background:linear-gradient(135deg,#e8f2ff,#d6e9ff);
+      border:1px dashed #bcd7ff;
+      color:#1b2a4a;
+      font-weight:850;
+      line-height:1.45;
+      text-align:center;
+    }
+
+    /* Confetti overlay (addition) */
+    .confetti{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:9999;
+    }
+
+    .piece{
+      position:absolute;
+      top:-10px;
+      width:10px;
+      height:14px;
+      border-radius:3px;
+      animation:fall linear forwards;
+      opacity:.9;
+    }
+
+    @keyframes fall{
+      to{ transform:translateY(110vh) rotate(720deg); }
+    }
   </style>
 </head>
 
 <body>
+  <!-- ADDITION: Confetti layer -->
+  <div class="confetti" id="confetti"></div>
+
 <div class="wrap">
 
 <header>
@@ -159,7 +320,7 @@
   </div>
 </section>
 
-<!-- 💙 PHOTOS (FIXED + EMOTIONAL) -->
+<!-- 💙 PHOTOS (unchanged) -->
 <section class="card">
   <h2>Hidden Messages Behind Photos 💙</h2>
   <p>Hover or tap to reveal what you truly are.</p>
@@ -230,6 +391,16 @@
   </div>
 </section>
 
+<!-- ✅ ADDITION: 23 Reasons Board -->
+<section class="card" id="reasonsBoard">
+  <h2>23 Reasons We Love You 💙</h2>
+  <div class="reasonsSub">Hover (or tap) each card — it flips… and confetti celebrates you ✨</div>
+
+  <div class="reasonsGrid" id="reasonsGrid">
+    <!-- Cards injected by JS (addition) -->
+  </div>
+</section>
+
 <footer>
   Made with 💙 just for Vidu
 </footer>
@@ -284,9 +455,90 @@
     });
   })();
 
-  /* Mobile tap support for flip */
+  /* Mobile tap support for flip (unchanged) */
   document.querySelectorAll(".photoCard").forEach(card=>{
     card.addEventListener("click",()=>card.classList.toggle("is-flipped"));
+  });
+
+  /* ================================
+     ADDITION: Confetti + 23 Reasons
+     ================================ */
+
+  function confettiBurst(count){
+    const root = document.getElementById("confetti");
+    const colors = ["#5fa8ff","#89c2ff","#ffffff","#d9ebff","#bcd7ff"];
+    for(let i=0;i<count;i++){
+      const d = document.createElement("div");
+      d.className = "piece";
+      d.style.left = (Math.random()*100) + "vw";
+      d.style.background = colors[Math.floor(Math.random()*colors.length)];
+      d.style.width = (6 + Math.random()*10) + "px";
+      d.style.height = (10 + Math.random()*14) + "px";
+      d.style.opacity = (0.65 + Math.random()*0.35).toFixed(2);
+      d.style.animationDuration = (2 + Math.random()*2) + "s";
+      root.appendChild(d);
+      setTimeout(()=> d.remove(), 4200);
+    }
+  }
+
+  const reasons = [
+    "You’re kind in a way that feels like sunlight.",
+    "You make people feel safe, seen, and loved.",
+    "You work hard — even when no one is watching.",
+    "You care deeply, and it shows in everything you do.",
+    "You’re strong… quietly, beautifully strong.",
+    "You make home feel like home.",
+    "You’re the best kind of chaos: fun chaos 😄",
+    "You’re wise beyond your years (but still adorable).",
+    "You lift others up without even trying.",
+    "You’re the reason “family” feels warm.",
+    "You never stop growing — and it’s inspiring.",
+    "You’re brave — especially in tough moments.",
+    "You’re the friend everyone secretly wishes they had.",
+    "You make ordinary days feel special.",
+    "You’re hilarious (yes, officially).",
+    "You’re thoughtful in the smallest details.",
+    "You have a heart that keeps giving.",
+    "You’re disciplined — CA Final is lucky to have you.",
+    "You’re beautiful inside and out.",
+    "You’re the best sister, always.",
+    "You’re the best daughter, always.",
+    "You’re the best person — full stop.",
+    "And… you deserve the happiest life, always 💙"
+  ];
+
+  const grid = document.getElementById("reasonsGrid");
+
+  reasons.forEach((text, idx) => {
+    const card = document.createElement("div");
+    card.className = "reasonCard";
+    card.dataset.fired = "0";
+
+    card.innerHTML = `
+      <div class="reasonInner">
+        <div class="reasonFace reasonFront">
+          <div class="num">${idx+1}</div>
+          <div>Reason</div>
+          <div class="hint">hover to reveal ✨</div>
+        </div>
+        <div class="reasonFace reasonBack">${text}</div>
+      </div>
+    `;
+
+    // Confetti only once per card (on first hover/tap)
+    const fireOnce = () => {
+      if(card.dataset.fired === "1") return;
+      card.dataset.fired = "1";
+      confettiBurst(140);
+    };
+
+    card.addEventListener("mouseenter", fireOnce);
+    card.addEventListener("click", () => {
+      card.classList.toggle("is-flipped"); // tap support
+      fireOnce();
+    });
+
+    grid.appendChild(card);
   });
 </script>
 
