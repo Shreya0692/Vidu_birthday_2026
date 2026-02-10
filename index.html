@@ -69,7 +69,7 @@
       cursor:pointer;
     }
 
-    /* ---------- QUIZ (FIXED DISPLAY ONLY) ---------- */
+    /* ---------- QUIZ (DISPLAY) ---------- */
     .quizQ{
       font-weight:900;
       font-size:18px;
@@ -110,9 +110,9 @@
       color:var(--muted);
       font-size:13px;
     }
-    /* --------------------------------------------- */
+    /* ---------------------------------- */
 
-    /* ---------- PHOTO FLIP (RESTORED) ---------- */
+    /* ---------- PHOTO FLIP ---------- */
     .photoGrid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -184,7 +184,7 @@
     }
 
     /* ================================
-       ADDITION: 23 Reasons Board
+       23 Reasons Board
        ================================ */
     .reasonsSub{
       margin-top:8px;
@@ -266,7 +266,7 @@
       text-align:center;
     }
 
-    /* Confetti overlay (addition) */
+    /* Confetti overlay */
     .confetti{
       position:fixed;
       inset:0;
@@ -292,7 +292,6 @@
 </head>
 
 <body>
-  <!-- ADDITION: Confetti layer -->
   <div class="confetti" id="confetti"></div>
 
 <div class="wrap">
@@ -306,100 +305,98 @@
 
 <div class="grid">
 
-<!-- 🎮 QUIZ (unchanged) -->
-<section class="card">
-  <h2>Vidu’s Birthday Quiz 🎉</h2>
-  <p>Answer carefully… all answers are emotionally evaluated 😌</p>
+  <!-- ✅ ORDER UPDATED: 23 Reasons → Photos → Quiz -->
 
-  <div class="quizQ" id="quizQ">Loading…</div>
-  <div class="options" id="options"></div>
-  <div class="score" id="score">Score: 0 / 0</div>
+  <!-- 23 Reasons Board -->
+  <section class="card" id="reasonsBoard">
+    <h2>23 Reasons We Love You 💙</h2>
+    <div class="reasonsSub">Hover (or tap) each card — it flips… and confetti celebrates you ✨</div>
 
-  <div style="margin-top:16px">
-    <button id="nextBtn">Next Question ➜</button>
-  </div>
-</section>
+    <div class="reasonsGrid" id="reasonsGrid"></div>
+  </section>
 
-<!-- 💙 PHOTOS (unchanged) -->
-<section class="card">
-  <h2>Hidden Messages Behind Photos 💙</h2>
-  <p>Hover or tap to reveal what you truly are.</p>
+  <!-- Photos -->
+  <section class="card">
+    <h2>Hidden Messages Behind Photos 💙</h2>
+    <p>Hover or tap to reveal what you truly are.</p>
 
-  <div class="photoGrid">
+    <div class="photoGrid">
 
-    <!-- BEST SISTER -->
-    <div class="photoCard">
-      <div class="photoInner">
-        <div class="photoFace photoFront">
-          <img data-base="Vidu02" class="autoImg" alt="Vidu">
-        </div>
-        <div class="photoFace photoBack">
-          <div class="backText">
-            Best Sister 💙
-            <small>
-              You are comfort on hard days, laughter on easy ones,
-              and strength even when you don’t realize it.
-            </small>
+      <div class="photoCard">
+        <div class="photoInner">
+          <div class="photoFace photoFront">
+            <img data-base="Vidu02" class="autoImg" alt="Vidu">
+          </div>
+          <div class="photoFace photoBack">
+            <div class="backText">
+              Best Sister 💙
+              <small>
+                You are comfort on hard days, laughter on easy ones,
+                and strength even when you don’t realize it.
+              </small>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- BEST DAUGHTER -->
-    <div class="photoCard">
-      <div class="photoInner">
-        <div class="photoFace photoFront">
-          <img data-base="Vidu03" class="autoImg" alt="Vidu">
-        </div>
-        <div class="photoFace photoBack">
-          <div class="backText">
-            Best Daughter 💙
-            <small>
-              Your love shows in the quiet ways — responsibility,
-              care, and the way you always think of others first.
-            </small>
+      <div class="photoCard">
+        <div class="photoInner">
+          <div class="photoFace photoFront">
+            <img data-base="Vidu03" class="autoImg" alt="Vidu">
+          </div>
+          <div class="photoFace photoBack">
+            <div class="backText">
+              Best Daughter 💙
+              <small>
+                Your love shows in the quiet ways — responsibility,
+                care, and the way you always think of others first.
+              </small>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- BEST PERSON -->
-    <div class="photoCard">
-      <div class="photoInner">
-        <div class="photoFace photoFront">
-          <img data-base="Vidu04" class="autoImg" alt="Vidu">
-        </div>
-        <div class="photoFace photoBack">
-          <div class="backText">
-            Best Person 💙
-            <small>
-              Kind heart. Strong mind. A soul that makes people
-              feel safe, valued, and loved — just by being you.
-            </small>
+      <div class="photoCard">
+        <div class="photoInner">
+          <div class="photoFace photoFront">
+            <img data-base="Vidu04" class="autoImg" alt="Vidu">
+          </div>
+          <div class="photoFace photoBack">
+            <div class="backText">
+              Best Person 💙
+              <small>
+                Kind heart. Strong mind. A soul that makes people
+                feel safe, valued, and loved — just by being you.
+              </small>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- Quiz -->
+  <section class="card">
+    <h2>Vidu’s Birthday Quiz 🎉</h2>
+    <p>Answer carefully… all answers are emotionally evaluated 😌</p>
 
-<section class="card">
-  <h2>Incoming Birthday Gifts 🎁</h2>
-  <div class="quoteBox">
-    Gifts are arriving soon… and celebrations continue 💙
-  </div>
-</section>
+    <div class="quizQ" id="quizQ">Loading…</div>
+    <div class="options" id="options"></div>
+    <div class="score" id="score">Score: 0 / 0</div>
 
-<!-- ✅ ADDITION: 23 Reasons Board -->
-<section class="card" id="reasonsBoard">
-  <h2>23 Reasons We Love You 💙</h2>
-  <div class="reasonsSub">Hover (or tap) each card — it flips… and confetti celebrates you ✨</div>
+    <div style="margin-top:16px">
+      <button id="nextBtn">Next Question ➜</button>
+    </div>
+  </section>
 
-  <div class="reasonsGrid" id="reasonsGrid">
-    <!-- Cards injected by JS (addition) -->
-  </div>
-</section>
+  <!-- Gifts -->
+  <section class="card">
+    <h2>Incoming Birthday Gifts 🎁</h2>
+    <div class="quoteBox">
+      Gifts are arriving soon… and celebrations continue 💙
+    </div>
+  </section>
 
 <footer>
   Made with 💙 just for Vidu
@@ -455,15 +452,12 @@
     });
   })();
 
-  /* Mobile tap support for flip (unchanged) */
+  /* Mobile tap support for photo flip (unchanged) */
   document.querySelectorAll(".photoCard").forEach(card=>{
     card.addEventListener("click",()=>card.classList.toggle("is-flipped"));
   });
 
-  /* ================================
-     ADDITION: Confetti + 23 Reasons
-     ================================ */
-
+  /* Confetti burst */
   function confettiBurst(count){
     const root = document.getElementById("confetti");
     const colors = ["#5fa8ff","#89c2ff","#ffffff","#d9ebff","#bcd7ff"];
@@ -481,6 +475,7 @@
     }
   }
 
+  /* 23 Reasons board */
   const reasons = [
     "You’re kind in a way that feels like sunlight.",
     "You make people feel safe, seen, and loved.",
@@ -525,7 +520,6 @@
       </div>
     `;
 
-    // Confetti only once per card (on first hover/tap)
     const fireOnce = () => {
       if(card.dataset.fired === "1") return;
       card.dataset.fired = "1";
@@ -534,7 +528,7 @@
 
     card.addEventListener("mouseenter", fireOnce);
     card.addEventListener("click", () => {
-      card.classList.toggle("is-flipped"); // tap support
+      card.classList.toggle("is-flipped");
       fireOnce();
     });
 
