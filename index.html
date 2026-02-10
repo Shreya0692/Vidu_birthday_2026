@@ -7,20 +7,15 @@
 
   <style>
     :root{
-      /* SUPER LIGHT WHITE ON BLUE */
       --bg1:#eef6ff;
       --bg2:#dfeeff;
-
       --card:#ffffff;
       --text:#1b2a4a;
       --muted:#4b6aa3;
-
       --accent:#5fa8ff;
       --accent2:#89c2ff;
-
       --shadow:0 18px 40px rgba(40,80,140,.18);
       --radius:22px;
-
       --good:#dff1ff;
       --bad:#ffe2e2;
     }
@@ -41,11 +36,7 @@
 
     .wrap{max-width:1000px;margin:0 auto;padding:36px 18px 90px}
 
-    h1{
-      margin:0;
-      font-size:clamp(34px,4vw,46px);
-      color:#123a7a;
-    }
+    h1{margin:0;font-size:clamp(34px,4vw,46px);color:#123a7a}
 
     .subtitle{
       margin-top:12px;
@@ -66,16 +57,7 @@
     }
 
     h2{margin:0 0 12px;color:#1c3d7a}
-
     p{margin:0;color:var(--muted);line-height:1.6}
-
-    .btnrow{
-      display:flex;
-      justify-content:center;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:16px;
-    }
 
     button{
       border:0;
@@ -85,140 +67,39 @@
       color:#08346b;
       font-weight:800;
       cursor:pointer;
-      box-shadow:0 10px 24px rgba(80,140,220,.35);
     }
 
-    .quoteBox{
-      margin-top:16px;
-      padding:18px;
-      border-radius:18px;
-      background:#f4f9ff;
-      border:1px dashed #bcd7ff;
-      max-width:820px;
-      margin-left:auto;
-      margin-right:auto;
-    }
-
-    .quoteText{font-size:17px;line-height:1.65}
-
-    /* Mood + Vibe */
-    .moodWrap,.vibeBox{
-      margin-top:18px;
-      padding:18px;
-      border-radius:22px;
-      background:#ffffff;
-      box-shadow:var(--shadow);
-      max-width:860px;
-      margin-left:auto;
-      margin-right:auto;
-    }
-
-    .moodTitle,.vibeTitle{
+    /* Quiz */
+    .quizQ{
       font-weight:900;
-      margin-bottom:10px;
-      color:#1c3d7a;
+      font-size:18px;
+      margin-bottom:14px;
     }
 
-    .moodTopRow{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:14px;
-      flex-wrap:wrap;
+    .options{
+      display:grid;
+      gap:12px;
+      max-width:520px;
+      margin:0 auto;
     }
 
-    .moodLabel{
-      background:#eef6ff;
-      padding:8px 14px;
-      border-radius:999px;
-      font-weight:800;
-      color:#2a5da8;
-    }
-
-    input[type="range"]{
-      width:min(560px,90vw);
-      accent-color:#6aaeff;
-    }
-
-    .moodReadout,.vibeMessage{
-      margin-top:14px;
-      padding:16px;
+    .opt{
+      padding:14px;
       border-radius:18px;
-      background:#f4f9ff;
-      border:1px dashed #bcd7ff;
-      line-height:1.6;
-    }
-
-    .vibeTags{
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .tag{
-      padding:10px 14px;
-      border-radius:999px;
       background:#eef6ff;
       border:1px solid #cfe3ff;
       font-weight:800;
-      color:#2a5da8;
       cursor:pointer;
     }
 
-    .tag.active{
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      color:#08346b;
-      border-color:transparent;
+    .opt.correct{background:var(--good)}
+    .opt.wrong{background:var(--bad)}
+
+    .score{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:13px;
     }
-
-    /* Photos */
-    .photoGrid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:18px;
-      margin-top:18px;
-    }
-
-    .photoCard{perspective:1200px;cursor:pointer}
-
-    .photoInner{
-      position:relative;
-      height:300px;
-      transition:transform .7s ease;
-      transform-style:preserve-3d;
-      border-radius:18px;
-    }
-
-    .photoCard:hover .photoInner,
-    .photoCard.is-flipped .photoInner{transform:rotateY(180deg)}
-
-    .photoFace{
-      position:absolute;
-      inset:0;
-      border-radius:18px;
-      overflow:hidden;
-      backface-visibility:hidden;
-      box-shadow:var(--shadow);
-    }
-
-    .photoFront img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    .photoBack{
-      transform:rotateY(180deg);
-      background:linear-gradient(135deg,#e8f2ff,#d6e9ff);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
-    }
-
-    .backText{font-weight:900}
-    .backText small{display:block;margin-top:10px;color:#3b5f99}
 
     footer{
       margin-top:34px;
@@ -234,44 +115,23 @@
 <header>
   <h1>Happy 23rd Birthday, Vidu 💙</h1>
   <div class="subtitle">
-    From Udaipur to the whole universe — this page is your little birthday corner.
-    You’re going to crush <b>CA Final</b> ✨
-  </div>
-
-  <div class="moodWrap">
-    <div class="moodTitle">Mood Meter 🎚️</div>
-    <div class="moodTopRow">
-      <div class="moodLabel">📚 Study</div>
-      <input id="moodSlider" type="range" min="0" max="100" value="45">
-      <div class="moodLabel">🎉 Party</div>
-    </div>
-    <div class="moodReadout">Balanced mode: study + chill + dessert 💙</div>
-  </div>
-
-  <div class="vibeBox">
-    <div class="vibeTitle">Vidu Vibe Mixer 💙</div>
-    <div class="vibeTags" id="vibeTags">
-      <div class="tag active">📍 Udaipur</div>
-      <div class="tag">📚 CA Final</div>
-      <div class="tag">🍕 Pizza</div>
-      <div class="tag">🍰 Desserts</div>
-      <div class="tag">🎁 Birthday Season</div>
-    </div>
-    <div class="vibeMessage">
-      Udaipur sunshine + birthday energy = perfect vibes 💙
-    </div>
+    From Udaipur to the whole universe — this page is your birthday playground ✨
   </div>
 </header>
 
 <div class="grid">
 
+<!-- 🎮 FUN QUIZ -->
 <section class="card">
-  <h2>Birthday Fortune 💙</h2>
-  <div class="btnrow">
-    <button>Open a Fortune ✨</button>
-  </div>
-  <div class="quoteBox">
-    <div class="quoteText">23 looks incredibly good on you 💙</div>
+  <h2>Vidu’s Birthday Quiz 🎉</h2>
+  <p>Answer carefully… all answers are emotionally evaluated 😌</p>
+
+  <div class="quizQ" id="quizQ">Loading…</div>
+  <div class="options" id="options"></div>
+  <div class="score" id="score">Score: 0 / 0</div>
+
+  <div style="margin-top:16px">
+    <button id="nextBtn">Next Question ➜</button>
   </div>
 </section>
 
@@ -280,49 +140,18 @@
   <p>Tap or hover on a photo.</p>
 
   <div class="photoGrid">
-    <div class="photoCard">
-      <div class="photoInner">
-        <div class="photoFace photoFront">
-          <img data-base="Vidu01" class="autoImg" alt="Vidu memory 02">
-        </div>
-        <div class="photoFace photoBack">
-          <div class="backText">Best sister 💙<small>You make life lighter.</small></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="photoCard">
-      <div class="photoInner">
-        <div class="photoFace photoFront">
-          <img data-base="Vidu03" class="autoImg" alt="Vidu memory 03">
-        </div>
-        <div class="photoFace photoBack">
-          <div class="backText">Best daughter 💙<small>Your love shows everywhere.</small></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="photoCard">
-      <div class="photoInner">
-        <div class="photoFace photoFront">
-          <img data-base="Vidu02" class="autoImg" alt="Vidu memory 04">
-        </div>
-        <div class="photoFace photoBack">
-          <div class="backText">Best person 💙<small>Kind. Strong. Beautiful.</small></div>
-        </div>
-      </div>
-    </div>
+    <img data-base="Vidu02" class="autoImg" alt="">
+    <img data-base="Vidu03" class="autoImg" alt="">
+    <img data-base="Vidu04" class="autoImg" alt="">
   </div>
 </section>
 
 <section class="card">
   <h2>Incoming Birthday Gifts 🎁</h2>
   <div class="quoteBox">
-    Gifts are arriving soon… which means birthday celebrations continue 💙
+    Gifts are arriving soon… and celebrations continue 💙
   </div>
 </section>
-
-</div>
 
 <footer>
   Made with 💙 just for Vidu
@@ -331,12 +160,80 @@
 </div>
 
 <script>
-  /* Auto-load images with unknown extension/case */
+  /* Quiz Data */
+  const QUIZ = [
+    {
+      q:"What will you get as a gift this year?",
+      a:2,
+      o:["Apple Watch","Versace Perfume","Both","Just hugs and love"]
+    },
+    {
+      q:"How much do we love you?",
+      a:3,
+      o:["Normal amount","A lot","Infinity","More than infinity 💙"]
+    },
+    {
+      q:"What happens after CA Final?",
+      a:1,
+      o:["Sleep for 2 days","Celebrate like a queen 👑","More studying","Immediate vacation only"]
+    },
+    {
+      q:"Vidu’s biggest superpower is:",
+      a:3,
+      o:["Hard work","Kindness","Discipline","All of the above ✨"]
+    },
+    {
+      q:"Best birthday plan?",
+      a:2,
+      o:["No cake","Only studying","Cake + pizza + family","Sleep only"]
+    }
+  ];
+
+  let i=0,score=0,attempts=0,locked=false;
+
+  const qEl=document.getElementById("quizQ");
+  const optEl=document.getElementById("options");
+  const scoreEl=document.getElementById("score");
+
+  function render(){
+    locked=false;
+    const q=QUIZ[i];
+    qEl.textContent=q.q;
+    optEl.innerHTML="";
+    q.o.forEach((t,idx)=>{
+      const b=document.createElement("button");
+      b.className="opt";
+      b.textContent=t;
+      b.onclick=()=>{
+        if(locked)return;
+        locked=true;
+        attempts++;
+        if(idx===q.a){
+          score++;
+          b.classList.add("correct");
+        }else{
+          b.classList.add("wrong");
+          optEl.children[q.a].classList.add("correct");
+        }
+        scoreEl.textContent=`Score: ${score} / ${attempts}`;
+      };
+      optEl.appendChild(b);
+    });
+  }
+
+  document.getElementById("nextBtn").onclick=()=>{
+    i=(i+1)%QUIZ.length;
+    render();
+  };
+
+  render();
+
+  /* Auto-load images */
   (function(){
-    const exts=["jpg","jpeg","png","webp","JPG","JPEG","PNG","WEBP"];
+    const exts=["jpg","jpeg","png","JPG","PNG"];
     document.querySelectorAll("img.autoImg").forEach(img=>{
-      const base=img.dataset.base;
       let i=0;
+      const base=img.dataset.base;
       const tryNext=()=>{
         if(i>=exts.length)return;
         img.src=`images/${base}.${exts[i++]}`;
@@ -345,11 +242,6 @@
       tryNext();
     });
   })();
-
-  /* Flip on tap (mobile) */
-  document.querySelectorAll(".photoCard").forEach(c=>{
-    c.addEventListener("click",()=>c.classList.toggle("is-flipped"));
-  });
 </script>
 
 </body>
